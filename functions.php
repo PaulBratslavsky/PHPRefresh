@@ -86,5 +86,125 @@
         showName();
 
     ?>
+<br />
+    <?php 
+        function sayHello($arg = "blank") {
+            echo "Hello $arg!<br />";
+        }
+
+        sayHello("Paul");
+        sayHello("Ariya");
+        sayHello();
+    ?> 
+
+<br />
+    <?php 
+        $array_of_names = ["Paul","Ariya","Marissa","Natasha","Katusha"];
+
+        function showNames($arr = ["The Array is Empty"]) {
+            if ( is_array($arr) ) {
+                foreach ( $arr as $item ) {
+                    echo "$item<br />";
+                }
+            } else echo "Item is not an array!";
+        }
+
+        showNames($array_of_names);
+        showNames("Paul");
+        showNames();
+
+    ?>
+
+    <br />
+    <?php 
+        function sayHelloOptional($first_name, $last_name = null) {
+            if ($last_name) {
+                echo "Hello $first_name $last_name.<br ?>";
+            } else {
+                echo "Hello $first_name but we also need your last name.<br />";
+            }
+
+
+            
+        }
+
+        sayHelloOptional("Paul","Brats");
+        sayHelloOptional("Paul");
+    ?>
+    <br /> 
+
+    <?php 
+        //VARIABLE FUNCTIONS (WOW)
+        
+        function addTwo($arg1,$arg2) {
+            return $arg1 + $arg2;
+        }
+
+        $sum_of_two = 'addTwo';
+
+        echo $sum_of_two(1,1);
+
+    ?>
+
+    <br />
+
+    <?php 
+        //CLOSURES
+        $name = "friend!";
+
+        $greet = function () use($name) {
+            echo "Hello There $name";
+        };
+
+        $greet();
+    ?>
+
+    <h2>PHP Functions Examples</h2>
+    <?php 
+        $myString = "My name is Paul!";        
+        // echo strlen($myString);
+
+        for ( $i = 0; $i <= strlen($myString); $i++ ) {
+            echo $myString[$i] . "<br />";
+        }
+
+        function stringLength ($myString) {
+            for ( $i = 0; $i <= strlen($myString); $i++ ) {
+                echo "Position " . $i . " " .$myString[$i] . "<br />";
+            }
+        }
+
+        stringLength("hello world!");
+        stringLength($myString);
+
+        
+
+        echo strpos( $myString, 'Paul' );
+        echo substr( $myString, 11 );
+        echo substr( $myString, strpos($myString, 'Paul') );
+
+        $myArray = [
+            'sister' => 'Katusha',
+            'fiance' => 'Ariya',
+            'mother' => 'Natasha',
+            'brother' => 'Felix'
+        ];
+        
+        $myArrayKeys = array_keys($myArray);
+        var_dump($myArrayKeys);
+
+        foreach ( array_keys($myArray) as $name) {
+            echo "Hello, $name!<br />";
+        }
+
+        function printInfo ($value, $key) {
+            echo "$value is my $key<br />";
+        }
+        
+        // ALOWS YOU TO APPLY A FUNCTION TO EACH ITEM IN THE ARRAY
+        array_walk($myArray, 'printInfo');
+
+
+    ?>
 </body>
 </html>
